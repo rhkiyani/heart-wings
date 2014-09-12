@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+NSInteger HighScoreNubmer;
 
 @interface RKViewController : UIViewController
+{
+    IBOutlet UILabel *HighScore;
+    IBOutlet UIImageView *Bird;
+}
 
 @end
