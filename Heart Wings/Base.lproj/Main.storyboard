@@ -20,16 +20,165 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Heart Wings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZc-aa-VzC">
+                                <rect key="frame" x="28" y="123" width="265" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="47"/>
+                                <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="birdUp.png" translatesAutoresizingMaskIntoConstraints="NO" id="nIZ-hb-cue">
+                                <rect key="frame" x="132" y="198" width="56" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="High Score:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NJG-hk-gEy">
+                                <rect key="frame" x="20" y="261" width="280" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="24"/>
+                                <color key="textColor" red="0.50196081399917603" green="0.0" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQX-TV-Rtb">
+                                <rect key="frame" x="28" y="332" width="265" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="52"/>
+                                <state key="normal" title="PLAY">
+                                    <color key="titleColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="vtk-pR-NEK" kind="modal" id="QBH-dA-mmK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="Bird" destination="nIZ-hb-cue" id="XgW-jM-KBq"/>
+                        <outlet property="HighScore" destination="NJG-hk-gEy" id="CeJ-t7-mtw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
+        <!--Game-->
+        <scene sceneID="Khk-XG-FPT">
+            <objects>
+                <viewController id="vtk-pR-NEK" customClass="Game" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5A9-14-aGB"/>
+                        <viewControllerLayoutGuide type="bottom" id="ghQ-Q0-WnN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="z0R-iB-oau">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background-4.png" translatesAutoresizingMaskIntoConstraints="NO" id="nfc-G1-sNh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VxO-TN-hMb">
+                                <rect key="frame" x="20" y="0.0" width="280" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="80"/>
+                                <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Game Over" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIs-nb-bUU">
+                                <rect key="frame" x="20" y="129" width="280" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="48"/>
+                                <color key="textColor" red="0.50196081399917603" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WeQ-ZM-PfF">
+                                <rect key="frame" x="20" y="328" width="280" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="48"/>
+                                <state key="normal" title="EXIT">
+                                    <color key="titleColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="vXZ-lx-hvc" kind="modal" id="z61-UY-W9z"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plane1.png" translatesAutoresizingMaskIntoConstraints="NO" id="lk7-Hd-Qob">
+                                <rect key="frame" x="256" y="62" width="44" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plane2.png" translatesAutoresizingMaskIntoConstraints="NO" id="T7k-aY-SOT">
+                                <rect key="frame" x="256" y="135" width="44" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plane3.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ga5-pX-SDy">
+                                <rect key="frame" x="256" y="276" width="44" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="plane4.png" translatesAutoresizingMaskIntoConstraints="NO" id="5qq-KB-1GH">
+                                <rect key="frame" x="256" y="361" width="44" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bird-up-black.png" translatesAutoresizingMaskIntoConstraints="NO" id="Tl9-cd-fwo">
+                                <rect key="frame" x="132" y="218" width="56" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="DcC-aE-63f">
+                                <rect key="frame" x="150" y="266" width="20" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tap.png" translatesAutoresizingMaskIntoConstraints="NO" id="fGt-Ls-R7H">
+                                <rect key="frame" x="145" y="306" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="birdUp.png" translatesAutoresizingMaskIntoConstraints="NO" id="1PX-aL-VI7">
+                                <rect key="frame" x="60" y="264" width="56" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oB-Gs-J8l">
+                                <rect key="frame" x="0.0" y="5" width="320" height="563"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="StartGame:" destination="vtk-pR-NEK" eventType="touchUpInside" id="ODa-3q-gCA"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="Arrow" destination="DcC-aE-63f" id="YSS-rS-z1D"/>
+                        <outlet property="Bird" destination="1PX-aL-VI7" id="5wx-yW-v2b"/>
+                        <outlet property="BirdBlack" destination="Tl9-cd-fwo" id="FPh-bm-Erp"/>
+                        <outlet property="Exit" destination="WeQ-ZM-PfF" id="2sh-N1-GBB"/>
+                        <outlet property="GameOver" destination="EIs-nb-bUU" id="GLV-Qf-auF"/>
+                        <outlet property="Plane1" destination="lk7-Hd-Qob" id="r3g-p7-xI9"/>
+                        <outlet property="Plane2" destination="T7k-aY-SOT" id="Upz-VC-9pC"/>
+                        <outlet property="Plane3" destination="Ga5-pX-SDy" id="3pa-ul-p0B"/>
+                        <outlet property="Plane4" destination="5qq-KB-1GH" id="BYh-3i-mbI"/>
+                        <outlet property="ScoreLabel" destination="VxO-TN-hMb" id="n8H-cp-o7v"/>
+                        <outlet property="StartGame" destination="9oB-Gs-J8l" id="Xx9-pi-D5I"/>
+                        <outlet property="Tap" destination="fGt-Ls-R7H" id="Arp-Tz-2uv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7gG-Pq-mE9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="734" y="138"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="arrow.png" width="68" height="101"/>
         <image name="background-4.png" width="640" height="1136"/>
+        <image name="bird-up-black.png" width="111" height="80"/>
+        <image name="birdUp.png" width="111" height="80"/>
+        <image name="plane1.png" width="88" height="88"/>
+        <image name="plane2.png" width="88" height="88"/>
+        <image name="plane3.png" width="88" height="88"/>
+        <image name="plane4.png" width="88" height="88"/>
+        <image name="tap.png" width="60" height="60"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

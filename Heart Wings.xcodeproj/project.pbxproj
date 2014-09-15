@@ -34,6 +34,8 @@
 		8FAE39D619C2A6640036333B /* plane3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FAE39C919C2A6640036333B /* plane3.png */; };
 		8FAE39D719C2A6640036333B /* plane4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FAE39CA19C2A6640036333B /* plane4.png */; };
 		8FAE39D819C2A6640036333B /* tap.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FAE39CB19C2A6640036333B /* tap.png */; };
+		8FAE39DB19C3CCC60036333B /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAE39DA19C3CCC60036333B /* Game.m */; };
+		8FAE39DD19C3CCEF0036333B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FAE39DC19C3CCEF0036333B /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +81,9 @@
 		8FAE39C919C2A6640036333B /* plane3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plane3.png; sourceTree = "<group>"; };
 		8FAE39CA19C2A6640036333B /* plane4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plane4.png; sourceTree = "<group>"; };
 		8FAE39CB19C2A6640036333B /* tap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tap.png; sourceTree = "<group>"; };
+		8FAE39D919C3CCC60036333B /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Game.h; path = ../Game.h; sourceTree = "<group>"; };
+		8FAE39DA19C3CCC60036333B /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Game.m; path = ../Game.m; sourceTree = "<group>"; };
+		8FAE39DC19C3CCEF0036333B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FAE39DD19C3CCEF0036333B /* AudioToolbox.framework in Frameworks */,
 				8FAE398C19C2A54A0036333B /* CoreGraphics.framework in Frameworks */,
 				8FAE398E19C2A54A0036333B /* UIKit.framework in Frameworks */,
 				8FAE398A19C2A54A0036333B /* Foundation.framework in Frameworks */,
@@ -127,6 +133,7 @@
 		8FAE398819C2A54A0036333B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8FAE39DC19C3CCEF0036333B /* AudioToolbox.framework */,
 				8FAE398919C2A54A0036333B /* Foundation.framework */,
 				8FAE398B19C2A54A0036333B /* CoreGraphics.framework */,
 				8FAE398D19C2A54A0036333B /* UIKit.framework */,
@@ -141,6 +148,8 @@
 				8FAE399B19C2A54A0036333B /* Main.storyboard */,
 				8FAE399E19C2A54A0036333B /* RKViewController.h */,
 				8FAE399F19C2A54A0036333B /* RKViewController.m */,
+				8FAE39D919C3CCC60036333B /* Game.h */,
+				8FAE39DA19C3CCC60036333B /* Game.m */,
 				8FAE39A119C2A54A0036333B /* Images.xcassets */,
 				8FAE399019C2A54A0036333B /* Supporting Files */,
 			);
@@ -308,6 +317,7 @@
 				8FAE399619C2A54A0036333B /* main.m in Sources */,
 				8FAE399A19C2A54A0036333B /* RKAppDelegate.m in Sources */,
 				8FAE39A019C2A54A0036333B /* RKViewController.m in Sources */,
+				8FAE39DB19C3CCC60036333B /* Game.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,7 +446,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Heart Wings/Heart Wings-Prefix.pch";
 				INFOPLIST_FILE = "Heart Wings/Heart Wings-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -452,7 +462,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Heart Wings/Heart Wings-Prefix.pch";
 				INFOPLIST_FILE = "Heart Wings/Heart Wings-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -518,6 +528,7 @@
 				8FAE39BA19C2A54A0036333B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8FAE39BB19C2A54A0036333B /* Build configuration list for PBXNativeTarget "Heart WingsTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +537,7 @@
 				8FAE39BD19C2A54A0036333B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

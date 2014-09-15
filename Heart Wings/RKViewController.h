@@ -14,5 +14,5 @@ NSInteger HighScoreNubmer;
     IBOutlet UILabel *HighScore;
     IBOutlet UIImageView *Bird;
 }
-
+- (BOOL)prefersStatusBarHidden;
 @end
