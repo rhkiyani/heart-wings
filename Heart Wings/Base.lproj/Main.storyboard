@@ -139,6 +139,13 @@
                                     <action selector="StartGame:" destination="vtk-pR-NEK" eventType="touchUpInside" id="ODa-3q-gCA"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hnz-ZB-d03">
+                                <rect key="frame" x="20" y="0.0" width="284" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="80"/>
+                                <color key="textColor" red="0.0" green="0.25098040699958801" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -152,7 +159,7 @@
                         <outlet property="Plane2" destination="T7k-aY-SOT" id="Upz-VC-9pC"/>
                         <outlet property="Plane3" destination="Ga5-pX-SDy" id="3pa-ul-p0B"/>
                         <outlet property="Plane4" destination="5qq-KB-1GH" id="BYh-3i-mbI"/>
-                        <outlet property="ScoreLabel" destination="VxO-TN-hMb" id="n8H-cp-o7v"/>
+                        <outlet property="ScoreLabel" destination="hnz-ZB-d03" id="KTg-sO-2qM"/>
                         <outlet property="StartGame" destination="9oB-Gs-J8l" id="Xx9-pi-D5I"/>
                         <outlet property="Tap" destination="fGt-Ls-R7H" id="Arp-Tz-2uv"/>
                     </connections>

@@ -10,12 +10,13 @@
 #import <AudioToolbox/AudioToolbox.h>
 
 int BirdFlight;
-int RandomPlanePositionX;
-int RandomPlanePositionY;
+float RandomPlanePositionX;
+float RandomPlanePositionY;
 int ScoreNumber;
 int screenHeight;
-int LastPlanePositionX;
-int LastPlanePositionY;
+int screenWidth;
+float LastPlanePositionX;
+float LastPlanePositionY;
 bool gameOver;
 
 NSInteger HighScoreNumber;
@@ -37,10 +38,14 @@ NSInteger HighScoreNumber;
     
     NSTimer *BirdMovement;
     NSTimer *PlaneMovement;
+    NSTimer *PlaneMovement2;
     
     SystemSoundID CoinSound;
     SystemSoundID JumpSound;
+    
 }
+@property(nonatomic, copy) NSString *labelText;
+
 -(IBAction)StartGame:(id)sender;
 -(void)BirdMoving;
 -(void)PlaneMoving;

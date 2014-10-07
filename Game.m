@@ -14,10 +14,12 @@
 
 @implementation Game
 
+
 -(IBAction)StartGame:(id)sender
 {
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenHeight = screenRect.size.height;
+    screenWidth = screenRect.size.width;
     
     //NSLog(@"Height:%d",screenHeight);
     gameOver = false;
@@ -39,6 +41,8 @@
     [self PlacePlane4];
     
     PlaneMovement = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(PlaneMoving) userInfo:nil repeats:YES];
+    
+    PlaneMovement2 = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(PlaneMoving) userInfo:nil repeats:YES];
 }
 
 -(void)PlaneMoving
@@ -48,26 +52,27 @@
     Plane3.center = CGPointMake(Plane3.center.x - 1, Plane3.center.y);
     Plane4.center = CGPointMake(Plane4.center.x - 1, Plane4.center.y);
     
-    if (Plane1.center.x < -40)
+    if (Plane1.center.x < 1.00)
     {
         [self PlacePlane1];
-        
+        [self Score];
     }
-    if (Plane2.center.x < -40)
+    if (Plane2.center.x < 1.00)
     {
         [self PlacePlane2];
-        
+        [self Score];
     }
-    if (Plane3.center.x < -40)
+    if (Plane3.center.x < 1.00)
     {
         [self PlacePlane3];
-        
+        [self Score];
     }
-    if (Plane4.center.x < -40)
+    if (Plane4.center.x < 1.00)
     {
         [self PlacePlane4];
-        
+        [self Score];
     }
+    /*
     if ((Plane1.center.x == 0) ||
         (Plane2.center.x == 0) ||
         (Plane3.center.x == 0) ||
@@ -76,7 +81,7 @@
         [self Score];
         //NSLog(@"score\n");
     }
-    
+    */
     if (CGRectIntersectsRect(Bird.frame, Plane1.frame) ||
         CGRectIntersectsRect(Bird.frame, Plane2.frame) ||
         CGRectIntersectsRect(Bird.frame, Plane3.frame) ||
@@ -110,78 +115,44 @@
 -(void)Score
 {
     ScoreNumber = ScoreNumber + 1;
-    ScoreLabel.text = [NSString stringWithFormat:@"%i", ScoreNumber];
+ 
+    ScoreLabel.text = [NSString stringWithFormat:@"%d", ScoreNumber];
     
     AudioServicesPlaySystemSound(CoinSound);
 }
 
 -(void)PlacePlane1
 {
-    RandomPlanePositionX = (arc4random() % 340) + 340;
-    RandomPlanePositionY = arc4random() %480;
-    
-    if ((LastPlanePositionX < RandomPlanePositionX + 25 && LastPlanePositionX > RandomPlanePositionX - 25) &&
-        (LastPlanePositionY < RandomPlanePositionY + 25 && LastPlanePositionY > RandomPlanePositionY - 25))
-    {
-        RandomPlanePositionX = RandomPlanePositionX + 25;
-        RandomPlanePositionY = RandomPlanePositionY + 25;
-    }
+    RandomPlanePositionX = (arc4random() % screenWidth) + screenWidth;
+    RandomPlanePositionY = arc4random() % screenHeight;
     
     Plane1.center = CGPointMake(RandomPlanePositionX, RandomPlanePositionY);
-    
-    LastPlanePositionX = RandomPlanePositionX;
-    LastPlanePositionY = RandomPlanePositionY;
 }
 
 -(void)PlacePlane2
 {
-    RandomPlanePositionX = (arc4random() % 340) + 340;
-    RandomPlanePositionY = arc4random() %480;
-    
-    if ((LastPlanePositionX < RandomPlanePositionX + 25 && LastPlanePositionX > RandomPlanePositionX - 25) &&
-        (LastPlanePositionY < RandomPlanePositionY + 25 && LastPlanePositionY > RandomPlanePositionY - 25))
-    {
-        RandomPlanePositionX = RandomPlanePositionX + 25;
-        RandomPlanePositionY = RandomPlanePositionY + 25;
-    }
+    RandomPlanePositionX = (arc4random() % screenWidth) + screenWidth;
+    RandomPlanePositionY = arc4random() % screenHeight;
     
     Plane2.center = CGPointMake(RandomPlanePositionX, RandomPlanePositionY);
-    LastPlanePositionX = RandomPlanePositionX;
-    LastPlanePositionY = RandomPlanePositionY;
 }
 
 -(void)PlacePlane3
 {
-    RandomPlanePositionX = (arc4random() % 340) + 340;
-    RandomPlanePositionY = arc4random() %480;
-    
-    if ((LastPlanePositionX < RandomPlanePositionX + 25 && LastPlanePositionX > RandomPlanePositionX - 25) &&
-        (LastPlanePositionY < RandomPlanePositionY + 25 && LastPlanePositionY > RandomPlanePositionY - 25))
-    {
-        RandomPlanePositionX = RandomPlanePositionX + 25;
-        RandomPlanePositionY = RandomPlanePositionY + 25;
-    }
+    RandomPlanePositionX = (arc4random() % screenWidth) + screenWidth;
+    RandomPlanePositionY = arc4random() % screenHeight;
     
     Plane3.center = CGPointMake(RandomPlanePositionX, RandomPlanePositionY);
-    LastPlanePositionX = RandomPlanePositionX;
-    LastPlanePositionY = RandomPlanePositionY;
 }
+
 -(void)PlacePlane4
 {
-    RandomPlanePositionX = (arc4random() % 340) + 340;
-    RandomPlanePositionY = arc4random() %480;
-    
-    if ((LastPlanePositionX < RandomPlanePositionX + 25 && LastPlanePositionX > RandomPlanePositionX - 25) &&
-        (LastPlanePositionY < RandomPlanePositionY + 25 && LastPlanePositionY > RandomPlanePositionY - 25))
-    {
-        RandomPlanePositionX = RandomPlanePositionX + 25;
-        RandomPlanePositionY = RandomPlanePositionY + 25;
-    }
+    RandomPlanePositionX = (arc4random() % screenWidth) + screenWidth;
+    RandomPlanePositionY = arc4random() % screenHeight;
     
     Plane4.center = CGPointMake(RandomPlanePositionX, RandomPlanePositionY);
-    LastPlanePositionX = RandomPlanePositionX;
-    LastPlanePositionY = RandomPlanePositionY;
 }
+
 -(void)BirdMoving
 {
     Bird.center = CGPointMake(Bird.center.x, Bird.center.y - BirdFlight);
@@ -209,9 +180,11 @@
         [self GameOver];
     }
 }
+
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     BirdFlight = 20;
@@ -219,6 +192,7 @@
     if (!gameOver)
         AudioServicesPlaySystemSound(JumpSound);
 }
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
