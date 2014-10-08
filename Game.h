@@ -37,7 +37,7 @@ NSInteger HighScoreNumber;
     IBOutlet UILabel *GameOver;
     
     NSTimer *BirdMovement;
-    NSTimer *PlaneMovement;
+    NSTimer *PlaneMovement1;
     NSTimer *PlaneMovement2;
     
     SystemSoundID CoinSound;
@@ -48,7 +48,8 @@ NSInteger HighScoreNumber;
 
 -(IBAction)StartGame:(id)sender;
 -(void)BirdMoving;
--(void)PlaneMoving;
+-(void)PlaneMoving1;
+-(void)PlaneMoving2;
 -(void)PlacePlane1;
 -(void)PlacePlane2;
 -(void)PlacePlane3;

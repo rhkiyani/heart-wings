@@ -40,17 +40,17 @@
     [self PlacePlane3];
     [self PlacePlane4];
     
-    PlaneMovement = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(PlaneMoving) userInfo:nil repeats:YES];
+    PlaneMovement1 = [NSTimer scheduledTimerWithTimeInterval:0.010 target:self selector:@selector(PlaneMoving1) userInfo:nil repeats:YES];
     
-    PlaneMovement2 = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(PlaneMoving) userInfo:nil repeats:YES];
+    PlaneMovement2 = [NSTimer scheduledTimerWithTimeInterval:0.015 target:self selector:@selector(PlaneMoving2) userInfo:nil repeats:YES];
 }
 
--(void)PlaneMoving
+-(void)PlaneMoving1
 {
     Plane1.center = CGPointMake(Plane1.center.x - 1, Plane1.center.y);
     Plane2.center = CGPointMake(Plane2.center.x - 1, Plane2.center.y);
-    Plane3.center = CGPointMake(Plane3.center.x - 1, Plane3.center.y);
-    Plane4.center = CGPointMake(Plane4.center.x - 1, Plane4.center.y);
+    //Plane3.center = CGPointMake(Plane3.center.x - 1, Plane3.center.y);
+    //Plane4.center = CGPointMake(Plane4.center.x - 1, Plane4.center.y);
     
     if (Plane1.center.x < 1.00)
     {
@@ -62,6 +62,7 @@
         [self PlacePlane2];
         [self Score];
     }
+    /*
     if (Plane3.center.x < 1.00)
     {
         [self PlacePlane3];
@@ -72,6 +73,7 @@
         [self PlacePlane4];
         [self Score];
     }
+     */
     /*
     if ((Plane1.center.x == 0) ||
         (Plane2.center.x == 0) ||
@@ -83,13 +85,61 @@
     }
     */
     if (CGRectIntersectsRect(Bird.frame, Plane1.frame) ||
-        CGRectIntersectsRect(Bird.frame, Plane2.frame) ||
+        CGRectIntersectsRect(Bird.frame, Plane2.frame))
+        //CGRectIntersectsRect(Bird.frame, Plane3.frame) ||
+        //CGRectIntersectsRect(Bird.frame, Plane4.frame)
+    {
+        [self GameOver];
+    }
+}
+
+-(void)PlaneMoving2
+{
+    //Plane1.center = CGPointMake(Plane1.center.x - 1, Plane1.center.y);
+    //Plane2.center = CGPointMake(Plane2.center.x - 1, Plane2.center.y);
+    Plane3.center = CGPointMake(Plane3.center.x - 1, Plane3.center.y);
+    Plane4.center = CGPointMake(Plane4.center.x - 1, Plane4.center.y);
+    /*
+    if (Plane1.center.x < 1.00)
+    {
+        [self PlacePlane1];
+        [self Score];
+    }
+    if (Plane2.center.x < 1.00)
+    {
+        [self PlacePlane2];
+        [self Score];
+    }
+     */
+    if (Plane3.center.x < 1.00)
+    {
+        [self PlacePlane3];
+        [self Score];
+    }
+    if (Plane4.center.x < 1.00)
+    {
+        [self PlacePlane4];
+        [self Score];
+    }
+    /*
+     if ((Plane1.center.x == 0) ||
+     (Plane2.center.x == 0) ||
+     (Plane3.center.x == 0) ||
+     (Plane4.center.x == 0))
+     {
+     [self Score];
+     //NSLog(@"score\n");
+     }
+     */
+    if (//CGRectIntersectsRect(Bird.frame, Plane1.frame) ||
+        //CGRectIntersectsRect(Bird.frame, Plane2.frame) ||
         CGRectIntersectsRect(Bird.frame, Plane3.frame) ||
         CGRectIntersectsRect(Bird.frame, Plane4.frame))
     {
         [self GameOver];
     }
 }
+
 
 -(void)GameOver
 {
@@ -98,7 +148,8 @@
         [[NSUserDefaults standardUserDefaults] setInteger:ScoreNumber forKey:@"HighScoreSaved"];
     }
     
-    [PlaneMovement invalidate];
+    [PlaneMovement1 invalidate];
+    [PlaneMovement2 invalidate];
     [BirdMovement invalidate];
     
     Exit.hidden = NO;
@@ -116,7 +167,7 @@
 {
     ScoreNumber = ScoreNumber + 1;
  
-    ScoreLabel.text = [NSString stringWithFormat:@"%d", ScoreNumber];
+    ScoreLabel.text = [NSString stringWithFormat:@"%i", ScoreNumber];
     
     AudioServicesPlaySystemSound(CoinSound);
 }
