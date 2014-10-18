@@ -20,6 +20,7 @@
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     screenHeight = screenRect.size.height;
     screenWidth = screenRect.size.width;
+    planeMovement1 = 0;
     
     //NSLog(@"Height:%d",screenHeight);
     gameOver = false;
@@ -40,101 +41,91 @@
     [self PlacePlane3];
     [self PlacePlane4];
     
-    PlaneMovement1 = [NSTimer scheduledTimerWithTimeInterval:0.010 target:self selector:@selector(PlaneMoving1) userInfo:nil repeats:YES];
+    PlaneMovement1 = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(PlaneMoving1) userInfo:nil repeats:YES];
     
     PlaneMovement2 = [NSTimer scheduledTimerWithTimeInterval:0.015 target:self selector:@selector(PlaneMoving2) userInfo:nil repeats:YES];
+    
+    PlaneMovement3 = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(PlaneMoving3) userInfo:nil repeats:YES];
+    
+    PlaneMovement4 = [NSTimer scheduledTimerWithTimeInterval:0.80 target:self selector:@selector(PlaneMoving4) userInfo:nil repeats:YES];
 }
 
 -(void)PlaneMoving1
 {
-    Plane1.center = CGPointMake(Plane1.center.x - 1, Plane1.center.y);
-    Plane2.center = CGPointMake(Plane2.center.x - 1, Plane2.center.y);
-    //Plane3.center = CGPointMake(Plane3.center.x - 1, Plane3.center.y);
-    //Plane4.center = CGPointMake(Plane4.center.x - 1, Plane4.center.y);
+    if (planeMovement1 > 30 & planeMovement1 < 80)
+    {
+        Plane1.center = CGPointMake(Plane1.center.x-1, Plane1.center.y-1);
+    }
+    else if (planeMovement1 > 120 & planeMovement1 < 170)
+    {
+        Plane1.center = CGPointMake(Plane1.center.x-1, Plane1.center.y+1);
+    }
+    else if (planeMovement1 > 170)
+    {
+        planeMovement1 = 1;
+    }
+    else
+    {
+        Plane1.center = CGPointMake(Plane1.center.x - 1, Plane1.center.y);
+    }
+    
     
     if (Plane1.center.x < 1.00)
     {
         [self PlacePlane1];
         [self Score];
     }
+
+    if (CGRectIntersectsRect(Bird.frame, Plane1.frame))
+    {
+        [self GameOver];
+    }
+    planeMovement1++;
+}
+
+-(void)PlaneMoving2
+{
+    Plane2.center = CGPointMake(Plane2.center.x - 1, Plane2.center.y);
+    
     if (Plane2.center.x < 1.00)
     {
         [self PlacePlane2];
         [self Score];
     }
-    /*
-    if (Plane3.center.x < 1.00)
-    {
-        [self PlacePlane3];
-        [self Score];
-    }
-    if (Plane4.center.x < 1.00)
-    {
-        [self PlacePlane4];
-        [self Score];
-    }
-     */
-    /*
-    if ((Plane1.center.x == 0) ||
-        (Plane2.center.x == 0) ||
-        (Plane3.center.x == 0) ||
-        (Plane4.center.x == 0))
-    {
-        [self Score];
-        //NSLog(@"score\n");
-    }
-    */
-    if (CGRectIntersectsRect(Bird.frame, Plane1.frame) ||
-        CGRectIntersectsRect(Bird.frame, Plane2.frame))
-        //CGRectIntersectsRect(Bird.frame, Plane3.frame) ||
-        //CGRectIntersectsRect(Bird.frame, Plane4.frame)
+    
+    if (CGRectIntersectsRect(Bird.frame, Plane2.frame))
     {
         [self GameOver];
     }
 }
 
--(void)PlaneMoving2
+-(void)PlaneMoving3
 {
-    //Plane1.center = CGPointMake(Plane1.center.x - 1, Plane1.center.y);
-    //Plane2.center = CGPointMake(Plane2.center.x - 1, Plane2.center.y);
     Plane3.center = CGPointMake(Plane3.center.x - 1, Plane3.center.y);
-    Plane4.center = CGPointMake(Plane4.center.x - 1, Plane4.center.y);
-    /*
-    if (Plane1.center.x < 1.00)
-    {
-        [self PlacePlane1];
-        [self Score];
-    }
-    if (Plane2.center.x < 1.00)
-    {
-        [self PlacePlane2];
-        [self Score];
-    }
-     */
+    
     if (Plane3.center.x < 1.00)
     {
         [self PlacePlane3];
         [self Score];
     }
+    
+    if (CGRectIntersectsRect(Bird.frame, Plane3.frame))
+    {
+        [self GameOver];
+    }
+}
+
+-(void)PlaneMoving4
+{
+    Plane4.center = CGPointMake(Plane4.center.x - 1, Plane4.center.y);
+    
     if (Plane4.center.x < 1.00)
     {
         [self PlacePlane4];
         [self Score];
     }
-    /*
-     if ((Plane1.center.x == 0) ||
-     (Plane2.center.x == 0) ||
-     (Plane3.center.x == 0) ||
-     (Plane4.center.x == 0))
-     {
-     [self Score];
-     //NSLog(@"score\n");
-     }
-     */
-    if (//CGRectIntersectsRect(Bird.frame, Plane1.frame) ||
-        //CGRectIntersectsRect(Bird.frame, Plane2.frame) ||
-        CGRectIntersectsRect(Bird.frame, Plane3.frame) ||
-        CGRectIntersectsRect(Bird.frame, Plane4.frame))
+    
+    if (CGRectIntersectsRect(Bird.frame, Plane4.frame))
     {
         [self GameOver];
     }

@@ -18,6 +18,7 @@ int screenWidth;
 float LastPlanePositionX;
 float LastPlanePositionY;
 bool gameOver;
+int planeMovement1;
 
 NSInteger HighScoreNumber;
 
@@ -39,6 +40,8 @@ NSInteger HighScoreNumber;
     NSTimer *BirdMovement;
     NSTimer *PlaneMovement1;
     NSTimer *PlaneMovement2;
+    NSTimer *PlaneMovement3;
+    NSTimer *PlaneMovement4;
     
     SystemSoundID CoinSound;
     SystemSoundID JumpSound;
@@ -50,6 +53,8 @@ NSInteger HighScoreNumber;
 -(void)BirdMoving;
 -(void)PlaneMoving1;
 -(void)PlaneMoving2;
+-(void)PlaneMoving3;
+-(void)PlaneMoving4;
 -(void)PlacePlane1;
 -(void)PlacePlane2;
 -(void)PlacePlane3;
