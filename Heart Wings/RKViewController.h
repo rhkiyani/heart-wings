@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 NSInteger HighScoreNubmer;
-
+BOOL SwitchValue;
 @interface RKViewController : UIViewController
 {
     IBOutlet UILabel *HighScore;
+    IBOutlet UILabel *SoundSwitchLabel;
     IBOutlet UIImageView *Bird;
+    IBOutlet UISwitch *SoundSwitch;
 }
+- (IBAction)switchValueChanged;
 - (BOOL)prefersStatusBarHidden;
 @end

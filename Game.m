@@ -21,7 +21,7 @@
     screenHeight = screenRect.size.height;
     screenWidth = screenRect.size.width;
     planeMovement1 = 0;
-    
+    plane1 = 0;
     //NSLog(@"Height:%d",screenHeight);
     gameOver = false;
     Plane1.hidden = NO;
@@ -41,26 +41,26 @@
     [self PlacePlane3];
     [self PlacePlane4];
     
-    PlaneMovement1 = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(PlaneMoving1) userInfo:nil repeats:YES];
+    PlaneMovement1 = [NSTimer scheduledTimerWithTimeInterval:0.030 target:self selector:@selector(PlaneMoving1) userInfo:nil repeats:YES];
     
     PlaneMovement2 = [NSTimer scheduledTimerWithTimeInterval:0.015 target:self selector:@selector(PlaneMoving2) userInfo:nil repeats:YES];
     
-    PlaneMovement3 = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(PlaneMoving3) userInfo:nil repeats:YES];
+    PlaneMovement3 = [NSTimer scheduledTimerWithTimeInterval:0.010 target:self selector:@selector(PlaneMoving3) userInfo:nil repeats:YES];
     
-    PlaneMovement4 = [NSTimer scheduledTimerWithTimeInterval:0.80 target:self selector:@selector(PlaneMoving4) userInfo:nil repeats:YES];
+    PlaneMovement4 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(PlaneMoving4) userInfo:nil repeats:YES];
 }
 
 -(void)PlaneMoving1
 {
-    if (planeMovement1 > 30 & planeMovement1 < 80)
+    if (planeMovement1 > 30 & planeMovement1 < 80 + plane1)
     {
         Plane1.center = CGPointMake(Plane1.center.x-1, Plane1.center.y-1);
     }
-    else if (planeMovement1 > 120 & planeMovement1 < 170)
+    else if (planeMovement1 > 160 & planeMovement1 < 210 + plane1)
     {
         Plane1.center = CGPointMake(Plane1.center.x-1, Plane1.center.y+1);
     }
-    else if (planeMovement1 > 170)
+    else if (planeMovement1 > 210 + plane1)
     {
         planeMovement1 = 1;
     }
@@ -81,6 +81,7 @@
         [self GameOver];
     }
     planeMovement1++;
+    
 }
 
 -(void)PlaneMoving2
@@ -141,6 +142,8 @@
     
     [PlaneMovement1 invalidate];
     [PlaneMovement2 invalidate];
+    [PlaneMovement3 invalidate];
+    [PlaneMovement4 invalidate];
     [BirdMovement invalidate];
     
     Exit.hidden = NO;
@@ -169,6 +172,11 @@
     RandomPlanePositionY = arc4random() % screenHeight;
     
     Plane1.center = CGPointMake(RandomPlanePositionX, RandomPlanePositionY);
+    plane1 = plane1 + 10;
+    
+    if (plane1 > 80)
+        plane1 = 0;
+    NSLog(@"Plane 1: %i",plane1);
 }
 
 -(void)PlacePlane2
@@ -231,8 +239,15 @@
 {
     BirdFlight = 20;
     
-    if (!gameOver)
-        AudioServicesPlaySystemSound(JumpSound);
+    ToggleSwitch = [[NSUserDefaults standardUserDefaults] boolForKey:@"ToggleSound"];
+    
+    //NSLog(@"Switch: %hhd",ToggleSwitch);
+    
+    
+    if (ToggleSwitch) {
+        if (!gameOver)
+            AudioServicesPlaySystemSound(JumpSound);
+    }
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -255,12 +270,16 @@
     
     HighScoreNumber = [[NSUserDefaults standardUserDefaults] integerForKey:@"HighScoreSaved"];
     
-    NSURL *CoinSoundURL = [[NSBundle mainBundle] URLForResource:@"Pickup_Coin15" withExtension:@"wav"];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)CoinSoundURL, &CoinSound);
+    ToggleSwitch = [[NSUserDefaults standardUserDefaults] boolForKey:@"ToggleSound"];
     
-    NSURL *JumpSoundURL = [[NSBundle mainBundle] URLForResource:@"Jump4" withExtension:@"wav"];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)JumpSoundURL, &JumpSound);
-
+    if (ToggleSwitch)
+    {
+        NSURL *CoinSoundURL = [[NSBundle mainBundle] URLForResource:@"Pickup_Coin15" withExtension:@"wav"];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)CoinSoundURL, &CoinSound);
+        
+        NSURL *JumpSoundURL = [[NSBundle mainBundle] URLForResource:@"Jump4" withExtension:@"wav"];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)JumpSoundURL, &JumpSound);
+    }
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.

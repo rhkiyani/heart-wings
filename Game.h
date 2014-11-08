@@ -13,6 +13,7 @@ int BirdFlight;
 float RandomPlanePositionX;
 float RandomPlanePositionY;
 int ScoreNumber;
+int plane1;
 int screenHeight;
 int screenWidth;
 float LastPlanePositionX;
@@ -21,6 +22,7 @@ bool gameOver;
 int planeMovement1;
 
 NSInteger HighScoreNumber;
+BOOL ToggleSwitch;
 
 @interface Game : UIViewController
 {
