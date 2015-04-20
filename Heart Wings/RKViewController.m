@@ -7,8 +7,10 @@
 //
 
 #import "RKViewController.h"
+@import GoogleMobileAds;
 
 @interface RKViewController ()
+@property (weak, nonatomic) IBOutlet GADBannerView *bannerView;
 
 @end
 
@@ -32,6 +34,9 @@
     }
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    self.bannerView.adUnitID = @"ca-app-pub-2099928635048251/9238268313";
+    self.bannerView.rootViewController = self;
+    [self.bannerView loadRequest:[GADRequest request]];
 }
 
 - (void)didReceiveMemoryWarning
