@@ -48,6 +48,14 @@
     PlaneMovement3 = [NSTimer scheduledTimerWithTimeInterval:0.010 target:self selector:@selector(PlaneMoving3) userInfo:nil repeats:YES];
     
     PlaneMovement4 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(PlaneMoving4) userInfo:nil repeats:YES];
+    
+    PlaneMovement5 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(PlaneMoving4) userInfo:nil repeats:YES];
+    
+    PlaneMovement6 = [NSTimer scheduledTimerWithTimeInterval:0.010 target:self selector:@selector(PlaneMoving3) userInfo:nil repeats:YES];
+    
+    PlaneMovement7 = [NSTimer scheduledTimerWithTimeInterval:0.030 target:self selector:@selector(PlaneMoving1) userInfo:nil repeats:YES];
+    
+    PlaneMovement8 = [NSTimer scheduledTimerWithTimeInterval:0.015 target:self selector:@selector(PlaneMoving2) userInfo:nil repeats:YES];
 }
 
 -(void)PlaneMoving1
@@ -131,7 +139,6 @@
         [self GameOver];
     }
 }
-
 
 -(void)GameOver
 {

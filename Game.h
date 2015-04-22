@@ -44,6 +44,10 @@ BOOL ToggleSwitch;
     NSTimer *PlaneMovement2;
     NSTimer *PlaneMovement3;
     NSTimer *PlaneMovement4;
+    NSTimer *PlaneMovement5;
+    NSTimer *PlaneMovement6;
+    NSTimer *PlaneMovement7;
+    NSTimer *PlaneMovement8;
     
     SystemSoundID CoinSound;
     SystemSoundID JumpSound;
