@@ -37,6 +37,9 @@
 		8FAE39D819C2A6640036333B /* tap.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FAE39CB19C2A6640036333B /* tap.png */; };
 		8FAE39DB19C3CCC60036333B /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAE39DA19C3CCC60036333B /* Game.m */; };
 		8FAE39DD19C3CCEF0036333B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FAE39DC19C3CCEF0036333B /* AudioToolbox.framework */; };
+		8FE906A21AEDB9010099860A /* alien3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE9069F1AEDB9010099860A /* alien3.png */; };
+		8FE906A31AEDB9010099860A /* alien2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE906A01AEDB9010099860A /* alien2.png */; };
+		8FE906A41AEDB9010099860A /* alien1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE906A11AEDB9010099860A /* alien1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +89,9 @@
 		8FAE39D919C3CCC60036333B /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Game.h; path = ../Game.h; sourceTree = "<group>"; };
 		8FAE39DA19C3CCC60036333B /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Game.m; path = ../Game.m; sourceTree = "<group>"; };
 		8FAE39DC19C3CCEF0036333B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8FE9069F1AEDB9010099860A /* alien3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien3.png; sourceTree = "<group>"; };
+		8FE906A01AEDB9010099860A /* alien2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien2.png; sourceTree = "<group>"; };
+		8FE906A11AEDB9010099860A /* alien1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +169,9 @@
 		8FAE399019C2A54A0036333B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8FE9069F1AEDB9010099860A /* alien3.png */,
+				8FE906A01AEDB9010099860A /* alien2.png */,
+				8FE906A11AEDB9010099860A /* alien1.png */,
 				8FAE39BF19C2A6640036333B /* arrow.png */,
 				8FAE39C019C2A6640036333B /* background-4.png */,
 				8FAE39C119C2A6640036333B /* background-35.png */,
@@ -284,17 +293,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FE906A21AEDB9010099860A /* alien3.png in Resources */,
 				8FAE39D319C2A6640036333B /* Pickup_Coin15.wav in Resources */,
 				8FAE39D719C2A6640036333B /* plane4.png in Resources */,
 				8FAE39D019C2A6640036333B /* birdDown.png in Resources */,
 				8FAE39A219C2A54A0036333B /* Images.xcassets in Resources */,
 				8FAE39D519C2A6640036333B /* plane2.png in Resources */,
+				8FE906A41AEDB9010099860A /* alien1.png in Resources */,
 				8FAE39CE19C2A6640036333B /* background-35.png in Resources */,
 				8FAE399419C2A54A0036333B /* InfoPlist.strings in Resources */,
 				8FAE399D19C2A54A0036333B /* Main.storyboard in Resources */,
 				8FAE39CD19C2A6640036333B /* background-4.png in Resources */,
 				8FAE39CF19C2A6640036333B /* bird-up-black.png in Resources */,
 				8FAE39D219C2A6640036333B /* Jump4.wav in Resources */,
+				8FE906A31AEDB9010099860A /* alien2.png in Resources */,
 				8FAE39CC19C2A6640036333B /* arrow.png in Resources */,
 				8FAE39D419C2A6640036333B /* plane1.png in Resources */,
 				8FAE39D619C2A6640036333B /* plane3.png in Resources */,
