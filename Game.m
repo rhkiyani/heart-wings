@@ -24,10 +24,13 @@
     plane1 = 0;
     //NSLog(@"Height:%d",screenHeight);
     gameOver = false;
-    Plane1.hidden = NO;
-    Plane2.hidden = NO;
-    Plane3.hidden = NO;
-    Plane4.hidden = NO;
+    Plane1.hidden = YES;
+    Plane2.hidden = YES;
+    Plane3.hidden = YES;
+    Plane4.hidden = YES;
+    Alien1.hidden = YES;
+    Alien2.hidden = YES;
+    Alien3.hidden = YES;
     StartGame.hidden = YES;
     GameOver.hidden = YES;
     BirdBlack.hidden = YES;
@@ -48,14 +51,6 @@
     PlaneMovement3 = [NSTimer scheduledTimerWithTimeInterval:0.010 target:self selector:@selector(PlaneMoving3) userInfo:nil repeats:YES];
     
     PlaneMovement4 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(PlaneMoving4) userInfo:nil repeats:YES];
-    
-    PlaneMovement5 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(PlaneMoving4) userInfo:nil repeats:YES];
-    
-    PlaneMovement6 = [NSTimer scheduledTimerWithTimeInterval:0.010 target:self selector:@selector(PlaneMoving3) userInfo:nil repeats:YES];
-    
-    PlaneMovement7 = [NSTimer scheduledTimerWithTimeInterval:0.030 target:self selector:@selector(PlaneMoving1) userInfo:nil repeats:YES];
-    
-    PlaneMovement8 = [NSTimer scheduledTimerWithTimeInterval:0.015 target:self selector:@selector(PlaneMoving2) userInfo:nil repeats:YES];
 }
 
 -(void)PlaneMoving1
@@ -140,6 +135,52 @@
     }
 }
 
+-(void)AlienMoving1
+{
+    Alien1.center = CGPointMake(Alien1.center.x - 1, Alien1.center.y);
+    
+    if (Alien1.center.x < 1.00)
+    {
+        [self PlaceAlien1];
+        [self Score];
+    }
+    
+    if (CGRectIntersectsRect(Bird.frame, Alien1.frame))
+    {
+        [self GameOver];
+    }
+}
+
+-(void)AlienMoving2
+{
+    Alien2.center = CGPointMake(Alien2.center.x - 1, Alien2.center.y);
+    
+    if (Alien2.center.x < 1.00)
+    {
+        [self PlaceAlien2];
+        [self Score];
+    }
+    
+    if (CGRectIntersectsRect(Bird.frame, Alien2.frame))
+    {
+        [self GameOver];
+    }
+}
+-(void)AlienMoving3
+{
+    Alien3.center = CGPointMake(Alien3.center.x - 1, Alien3.center.y);
+    
+    if (Alien3.center.x < 1.00)
+    {
+        [self PlaceAlien3];
+        [self Score];
+    }
+    
+    if (CGRectIntersectsRect(Bird.frame, Alien3.frame))
+    {
+        [self GameOver];
+    }
+}
 -(void)GameOver
 {
     if (ScoreNumber > HighScoreNumber)
@@ -151,6 +192,9 @@
     [PlaneMovement2 invalidate];
     [PlaneMovement3 invalidate];
     [PlaneMovement4 invalidate];
+    [AlienMovement1 invalidate];
+    [AlienMovement2 invalidate];
+    [AlienMovement3 invalidate];
     [BirdMovement invalidate];
     
     Exit.hidden = NO;
@@ -160,6 +204,9 @@
     Plane2.hidden = YES;
     Plane3.hidden = YES;
     Plane4.hidden = YES;
+    Alien1.hidden = YES;
+    Alien2.hidden = YES;
+    Alien3.hidden = YES;
     
     gameOver = true;
 }
@@ -171,10 +218,26 @@
     ScoreLabel.text = [NSString stringWithFormat:@"%i", ScoreNumber];
     
     AudioServicesPlaySystemSound(CoinSound);
+    
+    if (ScoreNumber == 3) {
+        [self PlaceAlien1];
+        AlienMovement1 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(AlienMoving1) userInfo:nil repeats:YES];
+    }
+    
+    if (ScoreNumber == 9) {
+        [self PlaceAlien2];
+        AlienMovement2 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(AlienMoving2) userInfo:nil repeats:YES];
+    }
+    
+    if (ScoreNumber == 15) {
+        [self PlaceAlien3];
+        AlienMovement3 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(AlienMoving3) userInfo:nil repeats:YES];
+    }
 }
 
 -(void)PlacePlane1
 {
+    Plane1.hidden = NO;
     RandomPlanePositionX = (arc4random() % screenWidth) + screenWidth;
     RandomPlanePositionY = arc4random() % screenHeight;
     
@@ -188,6 +251,7 @@
 
 -(void)PlacePlane2
 {
+    Plane2.hidden = NO;
     RandomPlanePositionX = (arc4random() % screenWidth) + screenWidth;
     RandomPlanePositionY = arc4random() % screenHeight;
     
@@ -196,6 +260,7 @@
 
 -(void)PlacePlane3
 {
+    Plane3.hidden = NO;
     RandomPlanePositionX = (arc4random() % screenWidth) + screenWidth;
     RandomPlanePositionY = arc4random() % screenHeight;
     
@@ -204,12 +269,39 @@
 
 -(void)PlacePlane4
 {
+    Plane4.hidden = NO;
     RandomPlanePositionX = (arc4random() % screenWidth) + screenWidth;
     RandomPlanePositionY = arc4random() % screenHeight;
     
     Plane4.center = CGPointMake(RandomPlanePositionX, RandomPlanePositionY);
 }
 
+-(void)PlaceAlien1
+{
+    Alien1.hidden = NO;
+    RandomPlanePositionX = (arc4random() % screenWidth) + screenWidth;
+    RandomPlanePositionY = arc4random() % screenHeight;
+    
+    Alien1.center = CGPointMake(RandomPlanePositionX, RandomPlanePositionY);
+}
+
+-(void)PlaceAlien2
+{
+    Alien2.hidden = NO;
+    RandomPlanePositionX = (arc4random() % screenWidth) + screenWidth;
+    RandomPlanePositionY = arc4random() % screenHeight;
+    
+    Alien2.center = CGPointMake(RandomPlanePositionX, RandomPlanePositionY);
+}
+
+-(void)PlaceAlien3
+{
+    Alien3.hidden = NO;
+    RandomPlanePositionX = (arc4random() % screenWidth) + screenWidth;
+    RandomPlanePositionY = arc4random() % screenHeight;
+    
+    Alien3.center = CGPointMake(RandomPlanePositionX, RandomPlanePositionY);
+}
 -(void)BirdMoving
 {
     Bird.center = CGPointMake(Bird.center.x, Bird.center.y - BirdFlight);
@@ -272,6 +364,9 @@
     Plane2.hidden = YES;
     Plane3.hidden = YES;
     Plane4.hidden = YES;
+    Alien1.hidden = YES;
+    Alien2.hidden = YES;
+    Alien3.hidden = YES;
     Exit.hidden = YES;
     ScoreNumber = 0;
     
