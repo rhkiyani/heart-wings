@@ -43,6 +43,9 @@
     [self PlacePlane2];
     [self PlacePlane3];
     [self PlacePlane4];
+    [self PlaceAlien1];
+    [self PlaceAlien2];
+    [self PlaceAlien3];
     
     PlaneMovement1 = [NSTimer scheduledTimerWithTimeInterval:0.030 target:self selector:@selector(PlaneMoving1) userInfo:nil repeats:YES];
     
@@ -51,6 +54,12 @@
     PlaneMovement3 = [NSTimer scheduledTimerWithTimeInterval:0.010 target:self selector:@selector(PlaneMoving3) userInfo:nil repeats:YES];
     
     PlaneMovement4 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(PlaneMoving4) userInfo:nil repeats:YES];
+    
+    AlienMovement1 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(AlienMoving1) userInfo:nil repeats:YES];
+    
+    AlienMovement2 = [NSTimer scheduledTimerWithTimeInterval:0.015 target:self selector:@selector(AlienMoving2) userInfo:nil repeats:YES];
+    
+    AlienMovement3 = [NSTimer scheduledTimerWithTimeInterval:0.030 target:self selector:@selector(AlienMoving3) userInfo:nil repeats:YES];
 }
 
 -(void)PlaneMoving1
@@ -218,21 +227,6 @@
     ScoreLabel.text = [NSString stringWithFormat:@"%i", ScoreNumber];
     
     AudioServicesPlaySystemSound(CoinSound);
-    
-    if (ScoreNumber == 3) {
-        [self PlaceAlien1];
-        AlienMovement1 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(AlienMoving1) userInfo:nil repeats:YES];
-    }
-    
-    if (ScoreNumber == 9) {
-        [self PlaceAlien2];
-        AlienMovement2 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(AlienMoving2) userInfo:nil repeats:YES];
-    }
-    
-    if (ScoreNumber == 15) {
-        [self PlaceAlien3];
-        AlienMovement3 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(AlienMoving3) userInfo:nil repeats:YES];
-    }
 }
 
 -(void)PlacePlane1
