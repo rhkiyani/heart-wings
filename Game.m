@@ -21,6 +21,7 @@
     screenHeight = screenRect.size.height;
     screenWidth = screenRect.size.width;
     planeMovement1 = 0;
+    wheelMovement = 0;
     plane1 = 0;
     //NSLog(@"Height:%d",screenHeight);
     gameOver = false;
@@ -31,6 +32,7 @@
     Alien1.hidden = YES;
     Alien2.hidden = YES;
     Alien3.hidden = YES;
+    Wheel.hidden = YES;
     StartGame.hidden = YES;
     GameOver.hidden = YES;
     BirdBlack.hidden = YES;
@@ -46,6 +48,7 @@
     [self PlaceAlien1];
     [self PlaceAlien2];
     [self PlaceAlien3];
+    [self PlaceWheel];
     
     PlaneMovement1 = [NSTimer scheduledTimerWithTimeInterval:0.030 target:self selector:@selector(PlaneMoving1) userInfo:nil repeats:YES];
     
@@ -60,6 +63,8 @@
     AlienMovement2 = [NSTimer scheduledTimerWithTimeInterval:0.015 target:self selector:@selector(AlienMoving2) userInfo:nil repeats:YES];
     
     AlienMovement3 = [NSTimer scheduledTimerWithTimeInterval:0.030 target:self selector:@selector(AlienMoving3) userInfo:nil repeats:YES];
+    
+    WheelMovement = [NSTimer scheduledTimerWithTimeInterval:0.015 target:self selector:@selector(WheelMoving) userInfo:nil repeats:YES];
 }
 
 -(void)PlaneMoving1
@@ -151,7 +156,7 @@
     if (Alien1.center.x < 1.00)
     {
         [self PlaceAlien1];
-        [self Score];
+        [self Score2];
     }
     
     if (CGRectIntersectsRect(Bird.frame, Alien1.frame))
@@ -167,7 +172,7 @@
     if (Alien2.center.x < 1.00)
     {
         [self PlaceAlien2];
-        [self Score];
+        [self Score2];
     }
     
     if (CGRectIntersectsRect(Bird.frame, Alien2.frame))
@@ -182,13 +187,47 @@
     if (Alien3.center.x < 1.00)
     {
         [self PlaceAlien3];
-        [self Score];
+        [self Score2];
     }
     
     if (CGRectIntersectsRect(Bird.frame, Alien3.frame))
     {
         [self GameOver];
     }
+}
+-(void)WheelMoving
+{
+    //Wheel.center = CGPointMake(Wheel.center.x - 1, Wheel.center.y);
+    
+    if (wheelMovement > 1 & wheelMovement < 100)
+    {
+        Wheel.center = CGPointMake(Wheel.center.x-1, Wheel.center.y-1);
+    }
+    else if (wheelMovement > 100 & wheelMovement < 200)
+    {
+        Wheel.center = CGPointMake(Wheel.center.x-1, Wheel.center.y+1);
+    }
+    else if (wheelMovement > 201)
+    {
+        wheelMovement = 0;
+    }
+    else
+    {
+        Wheel.center = CGPointMake(Wheel.center.x - 1, Wheel.center.y);
+    }
+    
+    if (Wheel.center.x < 1.00)
+    {
+        [self PlaceWheel];
+        //[self Score3];
+    }
+    
+    if (CGRectIntersectsRect(Bird.frame, Wheel.frame))
+    {
+        [self Score3];
+        [self PlaceWheel];
+    }
+    wheelMovement++;
 }
 -(void)GameOver
 {
@@ -204,6 +243,7 @@
     [AlienMovement1 invalidate];
     [AlienMovement2 invalidate];
     [AlienMovement3 invalidate];
+    [WheelMovement invalidate];
     [BirdMovement invalidate];
     
     Exit.hidden = NO;
@@ -216,6 +256,7 @@
     Alien1.hidden = YES;
     Alien2.hidden = YES;
     Alien3.hidden = YES;
+    Wheel.hidden = YES;
     
     gameOver = true;
 }
@@ -228,7 +269,22 @@
     
     AudioServicesPlaySystemSound(CoinSound);
 }
-
+-(void)Score2
+{
+    ScoreNumber = ScoreNumber + 2;
+    
+    ScoreLabel.text = [NSString stringWithFormat:@"%i", ScoreNumber];
+    
+    AudioServicesPlaySystemSound(CoinSound);
+}
+-(void)Score3
+{
+    ScoreNumber = ScoreNumber + 5;
+    
+    ScoreLabel.text = [NSString stringWithFormat:@"%i", ScoreNumber];
+    
+    AudioServicesPlaySystemSound(CoinSound);
+}
 -(void)PlacePlane1
 {
     Plane1.hidden = NO;
@@ -296,6 +352,14 @@
     
     Alien3.center = CGPointMake(RandomPlanePositionX, RandomPlanePositionY);
 }
+-(void)PlaceWheel
+{
+    Wheel.hidden = NO;
+    RandomPlanePositionX = (arc4random() % screenWidth) + screenWidth;
+    RandomPlanePositionY = arc4random() % screenHeight;
+    
+    Wheel.center = CGPointMake(RandomPlanePositionX, RandomPlanePositionY);
+}
 -(void)BirdMoving
 {
     Bird.center = CGPointMake(Bird.center.x, Bird.center.y - BirdFlight);
@@ -361,6 +425,7 @@
     Alien1.hidden = YES;
     Alien2.hidden = YES;
     Alien3.hidden = YES;
+    Wheel.hidden = YES;
     Exit.hidden = YES;
     ScoreNumber = 0;
     

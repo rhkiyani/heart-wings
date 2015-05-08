@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F80ECB51AFC4EAE00FA71C3 /* wheel.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F80ECB41AFC4EAE00FA71C3 /* wheel.png */; };
 		8F8B92491AE4A047002277F5 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F8B92481AE4A047002277F5 /* GoogleMobileAds.framework */; };
 		8FAE398A19C2A54A0036333B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FAE398919C2A54A0036333B /* Foundation.framework */; };
 		8FAE398C19C2A54A0036333B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FAE398B19C2A54A0036333B /* CoreGraphics.framework */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F80ECB41AFC4EAE00FA71C3 /* wheel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wheel.png; sourceTree = "<group>"; };
 		8F8B92481AE4A047002277F5 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
 		8FAE398619C2A54A0036333B /* Heart Wings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart Wings.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FAE398919C2A54A0036333B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -169,6 +171,7 @@
 		8FAE399019C2A54A0036333B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8F80ECB41AFC4EAE00FA71C3 /* wheel.png */,
 				8FE9069F1AEDB9010099860A /* alien3.png */,
 				8FE906A01AEDB9010099860A /* alien2.png */,
 				8FE906A11AEDB9010099860A /* alien1.png */,
@@ -294,6 +297,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FE906A21AEDB9010099860A /* alien3.png in Resources */,
+				8F80ECB51AFC4EAE00FA71C3 /* wheel.png in Resources */,
 				8FAE39D319C2A6640036333B /* Pickup_Coin15.wav in Resources */,
 				8FAE39D719C2A6640036333B /* plane4.png in Resources */,
 				8FAE39D019C2A6640036333B /* birdDown.png in Resources */,
