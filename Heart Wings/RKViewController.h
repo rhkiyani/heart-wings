@@ -7,14 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+
 NSInteger HighScoreNubmer;
 BOOL SwitchValue;
-@interface RKViewController : UIViewController
+@interface RKViewController : UIViewController<AVAudioPlayerDelegate>
 {
     IBOutlet UILabel *HighScore;
-    IBOutlet UILabel *SoundSwitchLabel;
     IBOutlet UIImageView *Bird;
     IBOutlet UISwitch *SoundSwitch;
+    AVAudioPlayer *backgroundMusic;
 }
 - (IBAction)switchValueChanged;
 - (BOOL)prefersStatusBarHidden;

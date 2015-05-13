@@ -38,6 +38,11 @@
 		8FAE39D819C2A6640036333B /* tap.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FAE39CB19C2A6640036333B /* tap.png */; };
 		8FAE39DB19C3CCC60036333B /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FAE39DA19C3CCC60036333B /* Game.m */; };
 		8FAE39DD19C3CCEF0036333B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FAE39DC19C3CCEF0036333B /* AudioToolbox.framework */; };
+		8FCC45141B02BA19005DD397 /* home_bk.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8FCC45121B02BA19005DD397 /* home_bk.mp3 */; };
+		8FCC45151B02BA19005DD397 /* jump.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8FCC45131B02BA19005DD397 /* jump.wav */; };
+		8FCC45171B02BB6E005DD397 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FCC45161B02BB6E005DD397 /* AVFoundation.framework */; };
+		8FCC45191B02C598005DD397 /* collectcoin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8FCC45181B02C598005DD397 /* collectcoin.wav */; };
+		8FCC451B1B02CA55005DD397 /* game-over.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8FCC451A1B02CA55005DD397 /* game-over.wav */; };
 		8FE906A21AEDB9010099860A /* alien3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE9069F1AEDB9010099860A /* alien3.png */; };
 		8FE906A31AEDB9010099860A /* alien2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE906A01AEDB9010099860A /* alien2.png */; };
 		8FE906A41AEDB9010099860A /* alien1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE906A11AEDB9010099860A /* alien1.png */; };
@@ -91,6 +96,11 @@
 		8FAE39D919C3CCC60036333B /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Game.h; path = ../Game.h; sourceTree = "<group>"; };
 		8FAE39DA19C3CCC60036333B /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Game.m; path = ../Game.m; sourceTree = "<group>"; };
 		8FAE39DC19C3CCEF0036333B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8FCC45121B02BA19005DD397 /* home_bk.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = home_bk.mp3; sourceTree = "<group>"; };
+		8FCC45131B02BA19005DD397 /* jump.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jump.wav; sourceTree = "<group>"; };
+		8FCC45161B02BB6E005DD397 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8FCC45181B02C598005DD397 /* collectcoin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = collectcoin.wav; sourceTree = "<group>"; };
+		8FCC451A1B02CA55005DD397 /* game-over.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "game-over.wav"; sourceTree = "<group>"; };
 		8FE9069F1AEDB9010099860A /* alien3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien3.png; sourceTree = "<group>"; };
 		8FE906A01AEDB9010099860A /* alien2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien2.png; sourceTree = "<group>"; };
 		8FE906A11AEDB9010099860A /* alien1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien1.png; sourceTree = "<group>"; };
@@ -101,6 +111,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCC45171B02BB6E005DD397 /* AVFoundation.framework in Frameworks */,
 				8FAE39DD19C3CCEF0036333B /* AudioToolbox.framework in Frameworks */,
 				8FAE398C19C2A54A0036333B /* CoreGraphics.framework in Frameworks */,
 				8F8B92491AE4A047002277F5 /* GoogleMobileAds.framework in Frameworks */,
@@ -145,6 +156,7 @@
 		8FAE398819C2A54A0036333B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8FCC45161B02BB6E005DD397 /* AVFoundation.framework */,
 				8FAE39DC19C3CCEF0036333B /* AudioToolbox.framework */,
 				8FAE398919C2A54A0036333B /* Foundation.framework */,
 				8FAE398B19C2A54A0036333B /* CoreGraphics.framework */,
@@ -171,6 +183,10 @@
 		8FAE399019C2A54A0036333B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8FCC451A1B02CA55005DD397 /* game-over.wav */,
+				8FCC45181B02C598005DD397 /* collectcoin.wav */,
+				8FCC45121B02BA19005DD397 /* home_bk.mp3 */,
+				8FCC45131B02BA19005DD397 /* jump.wav */,
 				8F80ECB41AFC4EAE00FA71C3 /* wheel.png */,
 				8FE9069F1AEDB9010099860A /* alien3.png */,
 				8FE906A01AEDB9010099860A /* alien2.png */,
@@ -296,8 +312,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCC45151B02BA19005DD397 /* jump.wav in Resources */,
+				8FCC45191B02C598005DD397 /* collectcoin.wav in Resources */,
 				8FE906A21AEDB9010099860A /* alien3.png in Resources */,
 				8F80ECB51AFC4EAE00FA71C3 /* wheel.png in Resources */,
+				8FCC451B1B02CA55005DD397 /* game-over.wav in Resources */,
 				8FAE39D319C2A6640036333B /* Pickup_Coin15.wav in Resources */,
 				8FAE39D719C2A6640036333B /* plane4.png in Resources */,
 				8FAE39D019C2A6640036333B /* birdDown.png in Resources */,
@@ -312,6 +331,7 @@
 				8FAE39D219C2A6640036333B /* Jump4.wav in Resources */,
 				8FE906A31AEDB9010099860A /* alien2.png in Resources */,
 				8FAE39CC19C2A6640036333B /* arrow.png in Resources */,
+				8FCC45141B02BA19005DD397 /* home_bk.mp3 in Resources */,
 				8FAE39D419C2A6640036333B /* plane1.png in Resources */,
 				8FAE39D619C2A6640036333B /* plane3.png in Resources */,
 				8FAE39D119C2A6640036333B /* birdUp.png in Resources */,

@@ -7,6 +7,7 @@
 //
 
 #import "Game.h"
+#import "RKViewController.h"
 
 @interface Game ()
 
@@ -33,11 +34,17 @@
     Alien2.hidden = YES;
     Alien3.hidden = YES;
     Wheel.hidden = YES;
+    
     StartGame.hidden = YES;
     GameOver.hidden = YES;
     BirdBlack.hidden = YES;
     Arrow.hidden = YES;
     Tap.hidden = YES;
+    Avoid.hidden = YES;
+    Catch.hidden = YES;
+    Pt1.hidden = YES;
+    Pt2.hidden = YES;
+    Pt5.hidden = YES;
     
     BirdMovement = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(BirdMoving) userInfo:nil repeats:YES];
     
@@ -259,6 +266,8 @@
     Wheel.hidden = YES;
     
     gameOver = true;
+    
+    AudioServicesPlaySystemSound(GameOverSound);
 }
 
 -(void)Score
@@ -267,7 +276,7 @@
  
     ScoreLabel.text = [NSString stringWithFormat:@"%i", ScoreNumber];
     
-    AudioServicesPlaySystemSound(CoinSound);
+    //AudioServicesPlaySystemSound(CoinSound);
 }
 -(void)Score2
 {
@@ -275,7 +284,7 @@
     
     ScoreLabel.text = [NSString stringWithFormat:@"%i", ScoreNumber];
     
-    AudioServicesPlaySystemSound(CoinSound);
+    //AudioServicesPlaySystemSound(CoinSound);
 }
 -(void)Score3
 {
@@ -283,7 +292,7 @@
     
     ScoreLabel.text = [NSString stringWithFormat:@"%i", ScoreNumber];
     
-    AudioServicesPlaySystemSound(CoinSound);
+    AudioServicesPlaySystemSound(CoinSound2);
 }
 -(void)PlacePlane1
 {
@@ -419,13 +428,13 @@
 - (void)viewDidLoad
 {
     Plane1.hidden = YES;
-    Plane2.hidden = YES;
+    //Plane2.hidden = YES;
     Plane3.hidden = YES;
     Plane4.hidden = YES;
-    Alien1.hidden = YES;
+    //Alien1.hidden = YES;
     Alien2.hidden = YES;
     Alien3.hidden = YES;
-    Wheel.hidden = YES;
+    //Wheel.hidden = YES;
     Exit.hidden = YES;
     ScoreNumber = 0;
     
@@ -435,11 +444,17 @@
     
     if (ToggleSwitch)
     {
-        NSURL *CoinSoundURL = [[NSBundle mainBundle] URLForResource:@"Pickup_Coin15" withExtension:@"wav"];
-        AudioServicesCreateSystemSoundID((__bridge CFURLRef)CoinSoundURL, &CoinSound);
+        //NSURL *CoinSoundURL = [[NSBundle mainBundle] URLForResource:@"Pickup_Coin15" withExtension:@"wav"];
+        //AudioServicesCreateSystemSoundID((__bridge CFURLRef)CoinSoundURL, &CoinSound);
         
-        NSURL *JumpSoundURL = [[NSBundle mainBundle] URLForResource:@"Jump4" withExtension:@"wav"];
+        NSURL *JumpSoundURL = [[NSBundle mainBundle] URLForResource:@"jump" withExtension:@"wav"];
         AudioServicesCreateSystemSoundID((__bridge CFURLRef)JumpSoundURL, &JumpSound);
+        
+        NSURL *Coin2SoundURL = [[NSBundle mainBundle] URLForResource:@"collectcoin" withExtension:@"wav"];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)Coin2SoundURL, &CoinSound2);
+        
+        NSURL *GameOverURL = [[NSBundle mainBundle] URLForResource:@"game-over" withExtension:@"wav"];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)GameOverURL, &GameOverSound);
     }
     
     [super viewDidLoad];

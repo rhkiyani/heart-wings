@@ -25,12 +25,10 @@
     if (SwitchValue)
     {
         SoundSwitch.on = true;
-        SoundSwitchLabel.text = @"On";
     }
     else
     {
         SoundSwitch.on = false;
-        SoundSwitchLabel.text = @"Off";
     }
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -38,25 +36,44 @@
     self.bannerView.rootViewController = self;
     [self.bannerView loadRequest:[GADRequest request]];
 }
-
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSURL *musicFile = [[NSBundle mainBundle] URLForResource:@"home_bk"
+                                               withExtension:@"mp3"];
+    backgroundMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:musicFile
+                                                                  error:nil];
+    backgroundMusic.numberOfLoops = -1;
+    [backgroundMusic play];
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    backgroundMusic.delegate = nil;
+    [backgroundMusic stop];
+    backgroundMusic = nil;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (BOOL)prefersStatusBarHidden {
     return YES;
 }
 - (IBAction)switchValueChanged {
     if (SoundSwitch.on) {
-        SoundSwitchLabel.text = @"On";
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"ToggleSound"];
-        //SwitchValue = [[NSUserDefaults standardUserDefaults] boolForKey:@"ToggleSound"];
+        SwitchValue = [[NSUserDefaults standardUserDefaults] boolForKey:@"ToggleSound"];
+        [backgroundMusic play];
     }
     else {
-        SoundSwitchLabel.text = @"Off";
         [[NSUserDefaults standardUserDefaults] setBool:false forKey:@"ToggleSound"];
-        //SwitchValue = [[NSUserDefaults standardUserDefaults] boolForKey:@"ToggleSound"];
+        SwitchValue = [[NSUserDefaults standardUserDefaults] boolForKey:@"ToggleSound"];
+        [backgroundMusic stop];
     }
     //NSLog(@"Switch %hhd",SwitchValue);
 }

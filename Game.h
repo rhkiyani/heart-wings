@@ -43,6 +43,11 @@ BOOL ToggleSwitch;
     IBOutlet UIButton *Exit;
     IBOutlet UILabel *ScoreLabel;
     IBOutlet UILabel *GameOver;
+    IBOutlet UILabel *Avoid;
+    IBOutlet UILabel *Catch;
+    IBOutlet UILabel *Pt1;
+    IBOutlet UILabel *Pt2;
+    IBOutlet UILabel *Pt5;
     
     NSTimer *BirdMovement;
     NSTimer *PlaneMovement1;
@@ -54,8 +59,10 @@ BOOL ToggleSwitch;
     NSTimer *AlienMovement3;
     NSTimer *WheelMovement;
     
-    SystemSoundID CoinSound;
+    //SystemSoundID CoinSound;
+    SystemSoundID CoinSound2;
     SystemSoundID JumpSound;
+    SystemSoundID GameOverSound;
     
 }
 @property(nonatomic, copy) NSString *labelText;
