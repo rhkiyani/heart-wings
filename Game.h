@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 int BirdFlight;
 float RandomPlanePositionX;
@@ -25,7 +26,7 @@ int wheelMovement;
 NSInteger HighScoreNumber;
 BOOL ToggleSwitch;
 
-@interface Game : UIViewController
+@interface Game : UIViewController<AVAudioPlayerDelegate>
 {
     IBOutlet UIImageView *Bird;
     IBOutlet UIImageView *Plane1;
@@ -63,6 +64,7 @@ BOOL ToggleSwitch;
     SystemSoundID CoinSound2;
     SystemSoundID JumpSound;
     SystemSoundID GameOverSound;
+    AVAudioPlayer *backgroundMusic;
     
 }
 @property(nonatomic, copy) NSString *labelText;

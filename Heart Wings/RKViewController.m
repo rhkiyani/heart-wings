@@ -45,7 +45,9 @@
     backgroundMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:musicFile
                                                                   error:nil];
     backgroundMusic.numberOfLoops = -1;
-    [backgroundMusic play];
+    
+    if (SwitchValue)
+        [backgroundMusic play];
 }
 -(void)viewWillDisappear:(BOOL)animated
 {
@@ -65,7 +67,7 @@
     return YES;
 }
 - (IBAction)switchValueChanged {
-    if (SoundSwitch.on) {
+    if (SoundSwitch.on == true) {
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"ToggleSound"];
         SwitchValue = [[NSUserDefaults standardUserDefaults] boolForKey:@"ToggleSound"];
         [backgroundMusic play];

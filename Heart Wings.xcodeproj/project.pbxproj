@@ -46,6 +46,7 @@
 		8FE906A21AEDB9010099860A /* alien3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE9069F1AEDB9010099860A /* alien3.png */; };
 		8FE906A31AEDB9010099860A /* alien2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE906A01AEDB9010099860A /* alien2.png */; };
 		8FE906A41AEDB9010099860A /* alien1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FE906A11AEDB9010099860A /* alien1.png */; };
+		8FEFE5161B02EF1D00F436BB /* Whimsical-Popsicle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8FEFE5151B02EF1D00F436BB /* Whimsical-Popsicle.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		8FE9069F1AEDB9010099860A /* alien3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien3.png; sourceTree = "<group>"; };
 		8FE906A01AEDB9010099860A /* alien2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien2.png; sourceTree = "<group>"; };
 		8FE906A11AEDB9010099860A /* alien1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien1.png; sourceTree = "<group>"; };
+		8FEFE5151B02EF1D00F436BB /* Whimsical-Popsicle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Whimsical-Popsicle.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 		8FAE399019C2A54A0036333B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8FEFE5151B02EF1D00F436BB /* Whimsical-Popsicle.mp3 */,
 				8FCC451A1B02CA55005DD397 /* game-over.wav */,
 				8FCC45181B02C598005DD397 /* collectcoin.wav */,
 				8FCC45121B02BA19005DD397 /* home_bk.mp3 */,
@@ -332,6 +335,7 @@
 				8FE906A31AEDB9010099860A /* alien2.png in Resources */,
 				8FAE39CC19C2A6640036333B /* arrow.png in Resources */,
 				8FCC45141B02BA19005DD397 /* home_bk.mp3 in Resources */,
+				8FEFE5161B02EF1D00F436BB /* Whimsical-Popsicle.mp3 in Resources */,
 				8FAE39D419C2A6640036333B /* plane1.png in Resources */,
 				8FAE39D619C2A6640036333B /* plane3.png in Resources */,
 				8FAE39D119C2A6640036333B /* birdUp.png in Resources */,

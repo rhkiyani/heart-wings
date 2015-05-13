@@ -238,6 +238,8 @@
 }
 -(void)GameOver
 {
+    [backgroundMusic stop];
+    
     if (ScoreNumber > HighScoreNumber)
     {
         [[NSUserDefaults standardUserDefaults] setInteger:ScoreNumber forKey:@"HighScoreSaved"];
@@ -455,6 +457,13 @@
         
         NSURL *GameOverURL = [[NSBundle mainBundle] URLForResource:@"game-over" withExtension:@"wav"];
         AudioServicesCreateSystemSoundID((__bridge CFURLRef)GameOverURL, &GameOverSound);
+        
+        NSURL *musicFile = [[NSBundle mainBundle] URLForResource:@"Whimsical-Popsicle"
+                                                   withExtension:@"mp3"];
+        backgroundMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:musicFile
+                                                                 error:nil];
+        backgroundMusic.numberOfLoops = -1;
+        [backgroundMusic play];
     }
     
     [super viewDidLoad];
