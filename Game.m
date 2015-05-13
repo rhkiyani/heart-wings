@@ -7,6 +7,7 @@
 //
 
 #import "Game.h"
+#import "RKViewController.h"
 
 @interface Game ()
 
@@ -21,6 +22,7 @@
     screenHeight = screenRect.size.height;
     screenWidth = screenRect.size.width;
     planeMovement1 = 0;
+    wheelMovement = 0;
     plane1 = 0;
     //NSLog(@"Height:%d",screenHeight);
     gameOver = false;
@@ -31,11 +33,18 @@
     Alien1.hidden = YES;
     Alien2.hidden = YES;
     Alien3.hidden = YES;
+    Wheel.hidden = YES;
+    
     StartGame.hidden = YES;
     GameOver.hidden = YES;
     BirdBlack.hidden = YES;
     Arrow.hidden = YES;
     Tap.hidden = YES;
+    Avoid.hidden = YES;
+    Catch.hidden = YES;
+    Pt1.hidden = YES;
+    Pt2.hidden = YES;
+    Pt5.hidden = YES;
     
     BirdMovement = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(BirdMoving) userInfo:nil repeats:YES];
     
@@ -43,6 +52,10 @@
     [self PlacePlane2];
     [self PlacePlane3];
     [self PlacePlane4];
+    [self PlaceAlien1];
+    [self PlaceAlien2];
+    [self PlaceAlien3];
+    [self PlaceWheel];
     
     PlaneMovement1 = [NSTimer scheduledTimerWithTimeInterval:0.030 target:self selector:@selector(PlaneMoving1) userInfo:nil repeats:YES];
     
@@ -51,6 +64,14 @@
     PlaneMovement3 = [NSTimer scheduledTimerWithTimeInterval:0.010 target:self selector:@selector(PlaneMoving3) userInfo:nil repeats:YES];
     
     PlaneMovement4 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(PlaneMoving4) userInfo:nil repeats:YES];
+    
+    AlienMovement1 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(AlienMoving1) userInfo:nil repeats:YES];
+    
+    AlienMovement2 = [NSTimer scheduledTimerWithTimeInterval:0.015 target:self selector:@selector(AlienMoving2) userInfo:nil repeats:YES];
+    
+    AlienMovement3 = [NSTimer scheduledTimerWithTimeInterval:0.030 target:self selector:@selector(AlienMoving3) userInfo:nil repeats:YES];
+    
+    WheelMovement = [NSTimer scheduledTimerWithTimeInterval:0.015 target:self selector:@selector(WheelMoving) userInfo:nil repeats:YES];
 }
 
 -(void)PlaneMoving1
@@ -142,7 +163,7 @@
     if (Alien1.center.x < 1.00)
     {
         [self PlaceAlien1];
-        [self Score];
+        [self Score2];
     }
     
     if (CGRectIntersectsRect(Bird.frame, Alien1.frame))
@@ -158,7 +179,7 @@
     if (Alien2.center.x < 1.00)
     {
         [self PlaceAlien2];
-        [self Score];
+        [self Score2];
     }
     
     if (CGRectIntersectsRect(Bird.frame, Alien2.frame))
@@ -173,7 +194,7 @@
     if (Alien3.center.x < 1.00)
     {
         [self PlaceAlien3];
-        [self Score];
+        [self Score2];
     }
     
     if (CGRectIntersectsRect(Bird.frame, Alien3.frame))
@@ -181,8 +202,44 @@
         [self GameOver];
     }
 }
+-(void)WheelMoving
+{
+    //Wheel.center = CGPointMake(Wheel.center.x - 1, Wheel.center.y);
+    
+    if (wheelMovement > 1 & wheelMovement < 100)
+    {
+        Wheel.center = CGPointMake(Wheel.center.x-1, Wheel.center.y-1);
+    }
+    else if (wheelMovement > 100 & wheelMovement < 200)
+    {
+        Wheel.center = CGPointMake(Wheel.center.x-1, Wheel.center.y+1);
+    }
+    else if (wheelMovement > 201)
+    {
+        wheelMovement = 0;
+    }
+    else
+    {
+        Wheel.center = CGPointMake(Wheel.center.x - 1, Wheel.center.y);
+    }
+    
+    if (Wheel.center.x < 1.00)
+    {
+        [self PlaceWheel];
+        //[self Score3];
+    }
+    
+    if (CGRectIntersectsRect(Bird.frame, Wheel.frame))
+    {
+        [self Score3];
+        [self PlaceWheel];
+    }
+    wheelMovement++;
+}
 -(void)GameOver
 {
+    [backgroundMusic stop];
+    
     if (ScoreNumber > HighScoreNumber)
     {
         [[NSUserDefaults standardUserDefaults] setInteger:ScoreNumber forKey:@"HighScoreSaved"];
@@ -195,6 +252,7 @@
     [AlienMovement1 invalidate];
     [AlienMovement2 invalidate];
     [AlienMovement3 invalidate];
+    [WheelMovement invalidate];
     [BirdMovement invalidate];
     
     Exit.hidden = NO;
@@ -207,8 +265,11 @@
     Alien1.hidden = YES;
     Alien2.hidden = YES;
     Alien3.hidden = YES;
+    Wheel.hidden = YES;
     
     gameOver = true;
+    
+    AudioServicesPlaySystemSound(GameOverSound);
 }
 
 -(void)Score
@@ -217,24 +278,24 @@
  
     ScoreLabel.text = [NSString stringWithFormat:@"%i", ScoreNumber];
     
-    AudioServicesPlaySystemSound(CoinSound);
-    
-    if (ScoreNumber == 3) {
-        [self PlaceAlien1];
-        AlienMovement1 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(AlienMoving1) userInfo:nil repeats:YES];
-    }
-    
-    if (ScoreNumber == 9) {
-        [self PlaceAlien2];
-        AlienMovement2 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(AlienMoving2) userInfo:nil repeats:YES];
-    }
-    
-    if (ScoreNumber == 15) {
-        [self PlaceAlien3];
-        AlienMovement3 = [NSTimer scheduledTimerWithTimeInterval:0.050 target:self selector:@selector(AlienMoving3) userInfo:nil repeats:YES];
-    }
+    //AudioServicesPlaySystemSound(CoinSound);
 }
-
+-(void)Score2
+{
+    ScoreNumber = ScoreNumber + 2;
+    
+    ScoreLabel.text = [NSString stringWithFormat:@"%i", ScoreNumber];
+    
+    //AudioServicesPlaySystemSound(CoinSound);
+}
+-(void)Score3
+{
+    ScoreNumber = ScoreNumber + 5;
+    
+    ScoreLabel.text = [NSString stringWithFormat:@"%i", ScoreNumber];
+    
+    AudioServicesPlaySystemSound(CoinSound2);
+}
 -(void)PlacePlane1
 {
     Plane1.hidden = NO;
@@ -302,6 +363,14 @@
     
     Alien3.center = CGPointMake(RandomPlanePositionX, RandomPlanePositionY);
 }
+-(void)PlaceWheel
+{
+    Wheel.hidden = NO;
+    RandomPlanePositionX = (arc4random() % screenWidth) + screenWidth;
+    RandomPlanePositionY = arc4random() % screenHeight;
+    
+    Wheel.center = CGPointMake(RandomPlanePositionX, RandomPlanePositionY);
+}
 -(void)BirdMoving
 {
     Bird.center = CGPointMake(Bird.center.x, Bird.center.y - BirdFlight);
@@ -361,12 +430,13 @@
 - (void)viewDidLoad
 {
     Plane1.hidden = YES;
-    Plane2.hidden = YES;
+    //Plane2.hidden = YES;
     Plane3.hidden = YES;
     Plane4.hidden = YES;
-    Alien1.hidden = YES;
+    //Alien1.hidden = YES;
     Alien2.hidden = YES;
     Alien3.hidden = YES;
+    //Wheel.hidden = YES;
     Exit.hidden = YES;
     ScoreNumber = 0;
     
@@ -376,11 +446,24 @@
     
     if (ToggleSwitch)
     {
-        NSURL *CoinSoundURL = [[NSBundle mainBundle] URLForResource:@"Pickup_Coin15" withExtension:@"wav"];
-        AudioServicesCreateSystemSoundID((__bridge CFURLRef)CoinSoundURL, &CoinSound);
+        //NSURL *CoinSoundURL = [[NSBundle mainBundle] URLForResource:@"Pickup_Coin15" withExtension:@"wav"];
+        //AudioServicesCreateSystemSoundID((__bridge CFURLRef)CoinSoundURL, &CoinSound);
         
-        NSURL *JumpSoundURL = [[NSBundle mainBundle] URLForResource:@"Jump4" withExtension:@"wav"];
+        NSURL *JumpSoundURL = [[NSBundle mainBundle] URLForResource:@"jump" withExtension:@"wav"];
         AudioServicesCreateSystemSoundID((__bridge CFURLRef)JumpSoundURL, &JumpSound);
+        
+        NSURL *Coin2SoundURL = [[NSBundle mainBundle] URLForResource:@"collectcoin" withExtension:@"wav"];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)Coin2SoundURL, &CoinSound2);
+        
+        NSURL *GameOverURL = [[NSBundle mainBundle] URLForResource:@"game-over" withExtension:@"wav"];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)GameOverURL, &GameOverSound);
+        
+        NSURL *musicFile = [[NSBundle mainBundle] URLForResource:@"Whimsical-Popsicle"
+                                                   withExtension:@"mp3"];
+        backgroundMusic = [[AVAudioPlayer alloc] initWithContentsOfURL:musicFile
+                                                                 error:nil];
+        backgroundMusic.numberOfLoops = -1;
+        [backgroundMusic play];
     }
     
     [super viewDidLoad];

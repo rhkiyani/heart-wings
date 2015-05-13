@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 int BirdFlight;
 float RandomPlanePositionX;
@@ -20,11 +21,12 @@ float LastPlanePositionX;
 float LastPlanePositionY;
 bool gameOver;
 int planeMovement1;
+int wheelMovement;
 
 NSInteger HighScoreNumber;
 BOOL ToggleSwitch;
 
-@interface Game : UIViewController
+@interface Game : UIViewController<AVAudioPlayerDelegate>
 {
     IBOutlet UIImageView *Bird;
     IBOutlet UIImageView *Plane1;
@@ -34,6 +36,7 @@ BOOL ToggleSwitch;
     IBOutlet UIImageView *Alien1;
     IBOutlet UIImageView *Alien2;
     IBOutlet UIImageView *Alien3;
+    IBOutlet UIImageView *Wheel;
     IBOutlet UIImageView *Tap;
     IBOutlet UIImageView *BirdBlack;
     IBOutlet UIImageView *Arrow;
@@ -41,6 +44,11 @@ BOOL ToggleSwitch;
     IBOutlet UIButton *Exit;
     IBOutlet UILabel *ScoreLabel;
     IBOutlet UILabel *GameOver;
+    IBOutlet UILabel *Avoid;
+    IBOutlet UILabel *Catch;
+    IBOutlet UILabel *Pt1;
+    IBOutlet UILabel *Pt2;
+    IBOutlet UILabel *Pt5;
     
     NSTimer *BirdMovement;
     NSTimer *PlaneMovement1;
@@ -50,9 +58,13 @@ BOOL ToggleSwitch;
     NSTimer *AlienMovement1;
     NSTimer *AlienMovement2;
     NSTimer *AlienMovement3;
+    NSTimer *WheelMovement;
     
-    SystemSoundID CoinSound;
+    //SystemSoundID CoinSound;
+    SystemSoundID CoinSound2;
     SystemSoundID JumpSound;
+    SystemSoundID GameOverSound;
+    AVAudioPlayer *backgroundMusic;
     
 }
 @property(nonatomic, copy) NSString *labelText;
@@ -73,6 +85,7 @@ BOOL ToggleSwitch;
 -(void)PlaceAlien1;
 -(void)PlaceAlien2;
 -(void)PlaceAlien3;
+-(void)PlaceWheel;
 -(void)Score;
 -(void)GameOver;
 -(BOOL)prefersStatusBarHidden;
