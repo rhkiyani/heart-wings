@@ -33,38 +33,6 @@
             endingLineNumber = "66"
             landmarkName = "@interface Game"
             landmarkType = "2">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[Game labelText]"
-                  moduleName = "Heart Wings"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rizwankiyani/Development/Heart%20Wings/Game.h"
-                  timestampString = "453178163.546872"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "12">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[Game setLabelText:]"
-                  moduleName = "Heart Wings"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rizwankiyani/Development/Heart%20Wings/Game.h"
-                  timestampString = "453178163.547306"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "70"
-                  endingLineNumber = "70"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
